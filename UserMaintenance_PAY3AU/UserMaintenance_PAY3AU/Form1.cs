@@ -15,6 +15,9 @@ namespace UserMaintenance_PAY3AU
         public Form1()
         {
             InitializeComponent();
+            lastNamelb.Text = Resource1.LastName;
+            firstNamelb.Text = Resource1.FirstName;
+            btnadd.Text = Resource1.Add;
         }
     }
 }
