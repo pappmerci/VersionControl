@@ -18,16 +18,14 @@ namespace UserMaintenance_PAY3AU
         public Form1()
         {
             InitializeComponent();
-            lastNamelb.Text = Resource1.LastName;
-            firstNamelb.Text = Resource1.FirstName;
+            lastNamelb.Text = Resource1.FullName;
             btnadd.Text = Resource1.Add;
             listUsers.DataSource = users;
             listUsers.DataSource = users;
             listUsers.DisplayMember = "FullName";
             var u = new User()
             {
-                LastName = textLastName.Text,
-                FirstName = textFirstName.Text
+                FullName = textLastName.Text
 
             };
             users.Add(u);
