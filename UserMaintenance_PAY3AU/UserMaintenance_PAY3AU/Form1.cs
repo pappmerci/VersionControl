@@ -22,6 +22,7 @@ namespace UserMaintenance_PAY3AU
             lastNamelb.Text = Resource1.FullName;
             btnadd.Text = Resource1.Add;
             btnFile.Text = Resource1.File;
+            btnCancel.Text = Resource1.Cancel;
             listUsers.DataSource = users;
             listUsers.ValueMember= "ID";
             listUsers.DisplayMember = "FullName";
@@ -55,6 +56,15 @@ namespace UserMaintenance_PAY3AU
             };
             users.Add(u);
 
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            users.RemoveAt(listUsers.SelectedIndex);
+    
+           
+            
+                           
         }
     }
 }
