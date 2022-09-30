@@ -33,8 +33,7 @@ namespace UserMaintenance_PAY3AU
             this.textLastName = new System.Windows.Forms.TextBox();
             this.lastNamelb = new System.Windows.Forms.Label();
             this.btnadd = new System.Windows.Forms.Button();
-            this.textFirstName = new System.Windows.Forms.TextBox();
-            this.firstNamelb = new System.Windows.Forms.Label();
+            this.btnFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listUsers
@@ -49,7 +48,7 @@ namespace UserMaintenance_PAY3AU
             // textLastName
             // 
             this.textLastName.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.textLastName.Location = new System.Drawing.Point(380, 56);
+            this.textLastName.Location = new System.Drawing.Point(380, 61);
             this.textLastName.Name = "textLastName";
             this.textLastName.Size = new System.Drawing.Size(212, 22);
             this.textLastName.TabIndex = 1;
@@ -65,36 +64,30 @@ namespace UserMaintenance_PAY3AU
             // 
             // btnadd
             // 
-            this.btnadd.Location = new System.Drawing.Point(305, 129);
+            this.btnadd.Location = new System.Drawing.Point(305, 109);
             this.btnadd.Name = "btnadd";
             this.btnadd.Size = new System.Drawing.Size(287, 33);
             this.btnadd.TabIndex = 3;
             this.btnadd.Text = "button1";
             this.btnadd.UseVisualStyleBackColor = true;
+            this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
             // 
-            // textFirstName
+            // btnFile
             // 
-            this.textFirstName.Location = new System.Drawing.Point(380, 84);
-            this.textFirstName.Name = "textFirstName";
-            this.textFirstName.Size = new System.Drawing.Size(212, 22);
-            this.textFirstName.TabIndex = 4;
-            // 
-            // firstNamelb
-            // 
-            this.firstNamelb.AutoSize = true;
-            this.firstNamelb.Location = new System.Drawing.Point(302, 89);
-            this.firstNamelb.Name = "firstNamelb";
-            this.firstNamelb.Size = new System.Drawing.Size(46, 17);
-            this.firstNamelb.TabIndex = 5;
-            this.firstNamelb.Text = "label2";
+            this.btnFile.Location = new System.Drawing.Point(305, 276);
+            this.btnFile.Name = "btnFile";
+            this.btnFile.Size = new System.Drawing.Size(93, 40);
+            this.btnFile.TabIndex = 6;
+            this.btnFile.Text = "button1";
+            this.btnFile.UseVisualStyleBackColor = true;
+            this.btnFile.Click += new System.EventHandler(this.btnFile_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.firstNamelb);
-            this.Controls.Add(this.textFirstName);
+            this.Controls.Add(this.btnFile);
             this.Controls.Add(this.btnadd);
             this.Controls.Add(this.lastNamelb);
             this.Controls.Add(this.textLastName);
@@ -112,8 +105,7 @@ namespace UserMaintenance_PAY3AU
         private System.Windows.Forms.TextBox textLastName;
         private System.Windows.Forms.Label lastNamelb;
         private System.Windows.Forms.Button btnadd;
-        private System.Windows.Forms.TextBox textFirstName;
-        private System.Windows.Forms.Label firstNamelb;
+        private System.Windows.Forms.Button btnFile;
     }
 }
 
