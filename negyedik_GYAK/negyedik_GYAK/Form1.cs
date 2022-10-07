@@ -12,9 +12,18 @@ namespace negyedik_GYAK
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        RealEstateEntities context = new RealEstateEntities();
+        List<Flat> Flats;
+
+      public Form1()
         {
             InitializeComponent();
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            Flats = context.Flats.ToList();
         }
     }
 }
