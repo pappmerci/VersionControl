@@ -24,7 +24,8 @@ namespace negyedik_GYAK
         {
             InitializeComponent();
             LoadData();
-           
+
+
             try
             {
                 // Excel elindítása és az applikáció objektum betöltése
@@ -37,7 +38,7 @@ namespace negyedik_GYAK
                 xlSheet = xlWB.ActiveSheet;
 
                 // Tábla létrehozása
-                //CreateTable();  Ennek megírása a következő feladatrészben következik
+                CreateTable(); Ennek megírása a következő feladatrészben következik
 
                 // Control átadása a felhasználónak
                 xlApp.Visible = true;
@@ -56,6 +57,31 @@ namespace negyedik_GYAK
             }
 
         }
+
+
+        private void CreateTable()
+        {
+            string[] headers = new string[] {
+                                 "Kód",
+                                 "Eladó",
+                                 "Oldal",
+                                 "Kerület",
+                                 "Lift",
+                                 "Szobák száma",
+                                 "Alapterület (m2)",
+                                 "Ár (mFt)",
+                                 "Négyzetméter ár (Ft/m2)"};
+
+            for (int i = 0; i < headers.Length; i++)
+            {
+                xlSheet.Cells[1, i + 1] = headers[i];
+
+
+
+            }
+
+        }
+
 
         private void LoadData()
         {
