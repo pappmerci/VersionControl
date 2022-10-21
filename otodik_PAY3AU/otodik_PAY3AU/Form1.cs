@@ -1,4 +1,5 @@
-﻿using System;
+﻿using otodik_PAY3AU.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,13 +10,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace otodik_PAY3AU
-{
+{  
     public partial class Form1 : Form
-    {
+    {   
+        BindingList<RateData> Rates = new BindingList<Entities.RateData>();
         public Form1()
         {
             InitializeComponent();
             GetExchangeRates();
+            dGView.DataSource = Rates;
             
         }
 

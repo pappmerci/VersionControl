@@ -29,20 +29,36 @@ namespace otodik_PAY3AU
         /// </summary>
         private void InitializeComponent()
         {
+            this.dGView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dGView)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dGView
+            // 
+            this.dGView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGView.Location = new System.Drawing.Point(60, 48);
+            this.dGView.Name = "dGView";
+            this.dGView.RowHeadersWidth = 51;
+            this.dGView.RowTemplate.Height = 24;
+            this.dGView.Size = new System.Drawing.Size(665, 281);
+            this.dGView.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dGView);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.dGView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView dGView;
     }
 }
 
