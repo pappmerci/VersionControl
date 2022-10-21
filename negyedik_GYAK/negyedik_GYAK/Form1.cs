@@ -78,9 +78,7 @@ namespace negyedik_GYAK
             {
                 xlSheet.Cells[1, i + 1] = headers[i];
 
-
-
-            }
+                  }
             Excel.Range headerRange = xlSheet.get_Range(GetCell(1, 1), GetCell(1, headers.Length));
             headerRange.Font.Bold = true;
             headerRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
@@ -89,6 +87,8 @@ namespace negyedik_GYAK
             headerRange.RowHeight = 40;
             headerRange.Interior.Color = Color.LightBlue;
             headerRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+            Excel.Range tableRange = xlSheet.get_Range(GetCell(1, 1), GetCell(105, 1));
+            tableRange.Interior.Color = Color.Coral;
             object[,] values = new object[Flats.Count, headers.Length];
             int counter = 0;
             foreach (Flat f in Flats)
@@ -101,17 +101,16 @@ namespace negyedik_GYAK
                 values[counter, 5] = f.NumberOfRooms;
                 values[counter, 6] = f.FloorArea;
                 values[counter, 7] = f.Price;
-                
-
-
-
-;
+                values[counter, 8] = "1000000*GetCell(2,8)/Getcell(2,7)";
                 counter++;
-            }
+          }
             xlSheet.get_Range(
               GetCell(2, 1),
               GetCell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
         }
+
+      
+        
         private string GetCell(int x, int y)
         {
             string ExcelCoordinate = "";
