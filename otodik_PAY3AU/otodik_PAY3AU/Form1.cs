@@ -23,6 +23,8 @@ namespace otodik_PAY3AU
             GetExchangeRates();
             dGView.DataSource = Rates;
             ProcessXml();
+            chartRateData.DataSource = Rates;
+            ShowChartData();
      }
 
         public string GetExchangeRates()
@@ -73,6 +75,23 @@ namespace otodik_PAY3AU
                 if (unit != 0)
                     rate.Value = value / unit; 
             }
+        }
+
+        private void ShowChartData()
+        {
+            var series = chartRateData.Series[0];
+            series.ChartType = SeriesChartType.Line;
+            series.XValueMember = "Date";
+            series.YValueMembers = "Value";
+            series.BorderWidth = 2;
+
+            var legend = chartRateData.Legends[0];
+            legend.Enabled = false;
+
+            var chartArea = chartRateData.ChartAreas[0];
+            chartArea.AxisX.MajorGrid.Enabled = false;
+            chartArea.AxisY.MajorGrid.Enabled = false;
+            chartArea.AxisY.IsStartedFromZero = false;
         }
 
 
