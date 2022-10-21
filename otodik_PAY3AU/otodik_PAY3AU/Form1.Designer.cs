@@ -36,11 +36,11 @@ namespace otodik_PAY3AU
             // dGView
             // 
             this.dGView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGView.Location = new System.Drawing.Point(60, 48);
+            this.dGView.Location = new System.Drawing.Point(21, 110);
             this.dGView.Name = "dGView";
             this.dGView.RowHeadersWidth = 51;
             this.dGView.RowTemplate.Height = 24;
-            this.dGView.Size = new System.Drawing.Size(665, 281);
+            this.dGView.Size = new System.Drawing.Size(505, 150);
             this.dGView.TabIndex = 0;
             // 
             // Form1
