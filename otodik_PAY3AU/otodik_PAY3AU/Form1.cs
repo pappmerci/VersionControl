@@ -16,20 +16,29 @@ namespace otodik_PAY3AU
 {
     public partial class Form1 : Form
     {
-        BindingList<RateData> Rates = new BindingList<Entities.RateData>();
+        BindingList<RateData> Rates = new BindingList<RateData>();
+        BindingList<string> Currencies = new BindingList<string>();
         public Form1()
         {
             InitializeComponent();
+            GetCurrencies();
+           
+
             RefreshData();
+            
         }
 
         private void RefreshData()
         {
             dGView.Rows.Clear();
-            GetExchangeRates();
             dGView.DataSource = Rates;
-            ProcessXml();
+           
+            
             chartRateData.DataSource = Rates;
+           CurrencyComboBox.DataSource = Currencies;
+           ProcessCurrencies();
+            GetExchangeRates();
+            ProcessXml();
             ShowChartData();
         }
 
@@ -39,7 +48,7 @@ namespace otodik_PAY3AU
 
             var request = new GetExchangeRatesRequestBody()
             {
-                currencyNames = (string)(comboBox1.SelectedItem),
+                currencyNames = (string)(CurrencyComboBox.SelectedItem),
                 startDate = dateTimePicker1.Value.ToString(),
                 endDate = dateTimePicker2.Value.ToString()
             };
@@ -58,6 +67,29 @@ namespace otodik_PAY3AU
 
 
         }
+
+        public string GetCurrencies()
+        {
+            var mnbService = new MNBArfolyamServiceSoapClient();
+            var request = new GetCurrenciesRequestBody();
+           
+
+            var response = mnbService.GetCurrencies(request);
+
+            var result = response.GetCurrenciesResult;
+            RichTextBox rbox = new RichTextBox();
+            rbox.Size = new Size(500, 250);
+            rbox.Text = result;
+            this.Controls.Add(rbox); 
+
+            return result;
+
+          
+
+
+
+
+        }
         public void ProcessXml()
         {
 
@@ -73,7 +105,10 @@ namespace otodik_PAY3AU
 
                 // Valuta
                 var childElement = (XmlElement)element.ChildNodes[0];
+                if (childElement == null)
+                    continue;
                 rate.Currency = childElement.GetAttribute("curr");
+
 
                 // Érték
                 var unit = decimal.Parse(childElement.GetAttribute("unit"));
@@ -82,7 +117,29 @@ namespace otodik_PAY3AU
                     rate.Value = value / unit; 
             }
         }
+        public void ProcessCurrencies()
+        {
+            var xml = new XmlDocument();
+            xml.LoadXml(GetCurrencies());
+            foreach (XmlElement element in xml.DocumentElement)
+            {
+               
+                var childElement = (XmlElement)element.ChildNodes[0];
+          
+                Currencies.Add(childElement.InnerText);
 
+              
+                
+
+                
+                
+                
+              
+              
+
+            }
+        }
+    
         private void ShowChartData()
         {
             var series = chartRateData.Series[0];
@@ -110,7 +167,9 @@ namespace otodik_PAY3AU
             RefreshData();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        
+
+        private void CurrencyComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshData();
         }
