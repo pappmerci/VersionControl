@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace hetedik_PAY3AU
         PortfolioEntities context = new PortfolioEntities();
         List<PortfolioItem> Portfolio= new List<PortfolioItem>();
         List<decimal> Nyereségek = new List<decimal>();
+        
         public Form1()
         {
             InitializeComponent();
@@ -32,20 +34,23 @@ namespace hetedik_PAY3AU
             DateTime záróDátum = new DateTime(2016, 12, 30);
             TimeSpan z = záróDátum - kezdőDátum;
             for (int i = 0; i < z.Days - intervalum; i++)
-            {
+            {    
                 decimal ny = GetPortfolioValue(kezdőDátum.AddDays(i + intervalum))
                            - GetPortfolioValue(kezdőDátum.AddDays(i));
+
+          
                 Nyereségek.Add(ny);
-                Console.WriteLine(i + " " + ny);
+                Console.WriteLine(i + " " + ny );
+               
             }
+            
 
             var nyereségekRendezve = (from x in Nyereségek
                                       orderby x
                                       select x)
                                         .ToList();
+
             MessageBox.Show(nyereségekRendezve[nyereségekRendezve.Count() / 5].ToString());
-
-
         }
         private void CreatePortfolio()
         {
@@ -70,6 +75,45 @@ namespace hetedik_PAY3AU
             return value;
         }
 
+        private void Save_button_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
 
+       
+            sfd.Filter = "Text File (*.txt)|*.txt"; 
+            sfd.DefaultExt = "txt"; 
+            sfd.AddExtension = true;
+
+         if (sfd.ShowDialog() != DialogResult.OK) return;
+
+
+            using (StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.UTF8))
+            {
+                sw.WriteLine("Időszak Nyereség");
+
+                var nyereségekRendezve = (from x in Nyereségek
+                                          orderby x
+                                          select x)
+                                     .ToList();
+                int elemszam = 1;
+                foreach (var ny in nyereségekRendezve)
+                {
+                    sw.Write(elemszam + ":      ");
+                    sw.WriteLine(ny);
+                    elemszam++;
+                    
+                    
+                    
+
+
+
+
+
+
+
+                }
+
+            }
+        }
     }
 }

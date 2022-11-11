@@ -31,6 +31,7 @@ namespace hetedik_PAY3AU
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Save_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -55,12 +56,23 @@ namespace hetedik_PAY3AU
             this.dataGridView2.Size = new System.Drawing.Size(375, 257);
             this.dataGridView2.TabIndex = 1;
             // 
+            // Save_button
+            // 
+            this.Save_button.Location = new System.Drawing.Point(679, 354);
+            this.Save_button.Name = "Save_button";
+            this.Save_button.Size = new System.Drawing.Size(109, 42);
+            this.Save_button.TabIndex = 2;
+            this.Save_button.Text = "Save";
+            this.Save_button.UseVisualStyleBackColor = true;
+            this.Save_button.Click += new System.EventHandler(this.Save_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Save_button);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
@@ -75,6 +87,7 @@ namespace hetedik_PAY3AU
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button Save_button;
     }
 }
 
