@@ -19,6 +19,7 @@ namespace hetedik_PAY3AU
     public partial class Form1 : Form
     {
         List<Tick> Ticks;
+        List<decimal> nyereségekRendezve;
         PortfolioEntities context = new PortfolioEntities();
         List<PortfolioItem> Portfolio= new List<PortfolioItem>();
         List<decimal> Nyereségek = new List<decimal>();
@@ -45,7 +46,7 @@ namespace hetedik_PAY3AU
             }
             
 
-            var nyereségekRendezve = (from x in Nyereségek
+             nyereségekRendezve = (from x in Nyereségek
                                       orderby x
                                       select x)
                                         .ToList();
@@ -80,8 +81,8 @@ namespace hetedik_PAY3AU
             SaveFileDialog sfd = new SaveFileDialog();
 
        
-            sfd.Filter = "Text File (*.txt)|*.txt"; 
-            sfd.DefaultExt = "txt"; 
+            sfd.Filter = "Comma separeted values (*.csv)|*.csv"; 
+            sfd.DefaultExt = "csv"; 
             sfd.AddExtension = true;
 
          if (sfd.ShowDialog() != DialogResult.OK) return;
@@ -91,19 +92,16 @@ namespace hetedik_PAY3AU
             {
                 sw.WriteLine("Időszak Nyereség");
 
-                var nyereségekRendezve = (from x in Nyereségek
-                                          orderby x
-                                          select x)
-                                     .ToList();
+                
                 int elemszam = 1;
                 foreach (var ny in nyereségekRendezve)
                 {
                     sw.Write(elemszam + ":      ");
                     sw.WriteLine(ny);
                     elemszam++;
-                    
-                    
-                    
+
+
+
 
 
 
