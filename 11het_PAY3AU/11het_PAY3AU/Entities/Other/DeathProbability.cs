@@ -9,8 +9,8 @@ namespace _11het_PAY3AU.Entities.Other
     public class DeathProbability
     {
         public int kor { get; set; }
-        public string nem { get; set; }
-        public double P{ get; set; }
+        public Gender Gender { get; set; }
+        public double probability{ get; set; }
 
     }
 }
